@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 500px; /* Adjust this value to make the card taller */
-  background-color: white;
-  color: black;
-  margin: 10px auto;
+  max-width: 300px; /* Ensure each card has a maximum width */
+  height: 400px; /* Adjust this value to make the card taller */
+  background-color: black;
+  color: #333;
+  margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;

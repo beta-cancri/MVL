@@ -2,15 +2,17 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw; /* Ensure it covers the full viewport width */
+  overflow: hidden; /* Prevent scrollbars */
+  margin: 0; /* Remove any margins */
+  padding: 0; /* Remove any paddings */
 }
 
 .main-content {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
-.content {
   flex-grow: 1;
-  padding: 20px;
-  margin-left: 250px; 
+  margin-top: 60px; /* Ensure content starts below the navbar */
+  margin-left: 250px; /* Ensure content starts to the right of the sidebar */
+  background-color: #f0f0f0;
+  height: calc(100vh - 60px); /* Account for the height of the navbar */
+  overflow-y: auto; /* Allow vertical scrolling for content */
+}

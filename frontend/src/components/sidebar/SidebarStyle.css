@@ -1,35 +1,47 @@
 .sidebarStyle {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
   width: 250px;
-  background-color: #333;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #222;
   color: white;
+  padding: 20px;
+  height: calc(100vh - 60px); /* Ensure the sidebar accounts for the navbar height */
+  position: fixed;
+  top: 60px; /* Position below the navbar */
+  left: 0;
+  z-index: 1000;
+  overflow-y: auto; /* Allow vertical scrolling for content */
 }
 
-.sidebarStyle .profilePic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
-.sidebarStyle button {
-  width: 80%;
+.sidebarButton {
+  display: block;
+  width: 100%;
   padding: 10px;
   margin: 10px 0;
   background-color: #007bff;
   color: white;
+  text-align: center;
+  text-decoration: none;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.sidebarStyle button:hover {
+.sidebarButton:hover {
   background-color: #0056b3;
+}
+
+.filterGroup {
+  margin: 20px 0;
+}
+
+.filterGroup h3 {
+  margin-bottom: 10px;
+}
+
+.filterGroup select,
+.filterGroup input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }

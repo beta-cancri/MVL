@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../components/navbar/Navbar';
 import Sidebar from '../components/sidebar/Sidebar';
-import './Layout.css';
+import './LayoutStyle.css';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -21,11 +21,9 @@ const Layout = ({ children }) => {
   return (
     <div className="layoutContainer">
       <Navbar />
-      <div className="contentContainer">
-        <Sidebar isLoggedIn={isLoggedIn} user={user} />
-        <div className="mainContent">
-          {children}
-        </div>
+      <Sidebar isLoggedIn={isLoggedIn} user={user} />
+      <div className="mainContent">
+        {children}
       </div>
     </div>
   );

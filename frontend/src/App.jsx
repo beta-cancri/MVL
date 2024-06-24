@@ -22,12 +22,14 @@ function AppContent() {
   const location = useLocation();
   const isLandingPage = location.pathname === '/';
 
+  console.log(`Rendering AppContent. isLandingPage: ${isLandingPage}`); // Debug statement
+
   return (
     <div className="app-container">
       {!isLandingPage && <Navbar />}
-      <div className="main-content">
+      <div className={`main-content ${isLandingPage ? 'no-sidebar' : ''}`}>
         {!isLandingPage && <Sidebar />}
-        <div className="content">
+        <div className={`content ${isLandingPage ? '' : 'contentWithSidebar'}`}>
           <Switch>
             <Route path="/" exact component={Landing} />
             <Route path="/home" component={Home} />

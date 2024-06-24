@@ -22,7 +22,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="landingStyle">
+    <div className="landing-page">
       <div className="loginContainerStyle">
         <h1>Welcome to My Videogame List</h1>
         <div className="inputContainerStyle">

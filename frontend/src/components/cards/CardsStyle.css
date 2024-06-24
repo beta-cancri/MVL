@@ -1,8 +1,11 @@
 .cardList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    width: 90vw;
-    margin: 0 auto;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Make the grid responsive */
+  gap: 20px; /* Add some spacing between cards */
+  width: 100%;
+  max-width: calc(100% - 40px); /* Ensure the card list fits within the content area */
+  margin: 0 auto;
+  padding: 20px; /* Add some padding to avoid touching the edges */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  background-color: #333;
+}
