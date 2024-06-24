@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="aboutStyle">
       <h1>About Page</h1>
-      {/* Add content here */}
+
     </div>
   );
 };

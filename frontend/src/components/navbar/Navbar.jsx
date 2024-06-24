@@ -4,12 +4,12 @@ import './NavbarStyle.css';
 const Navbar = () => {
   return (
     <div className="navbarStyle">
-      <div className="topBarStyle">
-        <div className="logoStyle">MVL</div>
-        <div className="searchBarStyle">
-          <input type="text" placeholder="Search games or users..." />
-          <button>Search</button>
-        </div>
+      <div className="navbarLeft">
+        <h1>MVL</h1>
+      </div>
+      <div className="navbarRight">
+        <input type="text" placeholder="Search games or users..." />
+        <button className="buttonSearch">Search</button>
       </div>
     </div>
   );

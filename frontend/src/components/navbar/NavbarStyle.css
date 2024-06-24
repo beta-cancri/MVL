@@ -3,39 +3,25 @@
   justify-content: space-between;
   align-items: center;
   background-color: #333;
-  color: white;
   padding: 10px 20px;
+  color: white;
 }
 
-.topBarStyle {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.logoStyle {
+.navbarStyle .logo {
   font-size: 24px;
   font-weight: bold;
 }
 
-.searchBarStyle {
+.navbarStyle .searchbar {
   display: flex;
-  flex: 1;
-  justify-content: flex-end;
+  align-items: center;
 }
 
-.searchBarStyle input {
+.navbarStyle .searchbar input {
   padding: 5px;
-  border: none;
-  border-radius: 3px;
+  margin-right: 10px;
 }
 
-.searchBarStyle button {
-  margin-left: 10px;
+.navbarStyle .searchbar button {
   padding: 5px 10px;
-  border: none;
-  border-radius: 3px;
-  background-color: #0066cc;
-  color: white;
-  cursor: pointer;
 }

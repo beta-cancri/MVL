@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Card from '../../components/card/Card';
-import Navbar from '../../components/navbar/Navbar';
+import Cards from '../../components/cards/Cards';
 import './HomeStyle.css';
 
 const Home = () => {
@@ -11,8 +10,15 @@ const Home = () => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await axios.get('/api/videogames');
-        setGames(response.data);
+        const response = await axios.get('http://localhost:3001/videogame');
+        const mappedGames = response.data.map(game => ({
+          id: game.id,
+          name: game.name,
+          genres: game.genres,
+          image: game.background_image, // Ensure correct field name
+          platforms: game.platforms,
+        }));
+        setGames(mappedGames);
       } catch (error) {
         console.error('Error fetching games:', error);
       } finally {
@@ -24,15 +30,10 @@ const Home = () => {
 
   return (
     <div className="homeStyle">
-      <Navbar />
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className="gamesGridStyle">
-          {games.map(game => (
-            <Card key={game.id} game={game} />
-          ))}
-        </div>
+        <Cards allVideogames={games} />
       )}
     </div>
   );

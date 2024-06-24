@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     return <div>{children}</div>;
   }
 
-  const isLoggedIn = true; // Change this based on your authentication logic
+  const isLoggedIn = true; 
   const user = {
     name: 'John Doe',
     picture: 'https://via.placeholder.com/150',

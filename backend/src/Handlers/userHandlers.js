@@ -1,4 +1,4 @@
-const { createUser, getUserById, searchUserByName, deleteUser } = require('../controllers/userControllers');
+const { createUser, getUserById, searchUserByName, deleteUser, loginUser } = require('../controllers/userControllers');
 
 const createUserHandler = async (req, res) => {
   const { username, password, email } = req.body;
@@ -48,9 +48,21 @@ const deleteUserHandler = async (req, res) => {
   }
 };
 
+const loginUserHandler = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await loginUser(username, password);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(401).send('Error logging in: ' + error.message);
+  }
+};
+
 module.exports = {
   createUserHandler,
   getUserHandler,
   searchUserHandler,
   deleteUserHandler,
+  loginUserHandler,
 };

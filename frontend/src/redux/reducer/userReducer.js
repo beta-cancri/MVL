@@ -2,7 +2,6 @@ const initialState = {
   user: null,
   favorites: [],
   gameList: [],
-  // other state as needed
 };
 
 const userReducer = (state = initialState, action) => {

@@ -40,10 +40,24 @@ const deleteUser = async (id) => {
     const result = await User.destroy({
       where: { id }
     });
-    return result; // result will be 1 if the user was deleted, 0 if no user was found
+    return result; 
   } catch (error) {
     throw error;
   }
 };
 
-module.exports = { createUser, getUserById, searchUserByName, deleteUser };
+const loginUser = async (username, password) => {
+  try {
+    const user = await User.findOne({ where: { username } });
+    if (!user) throw new Error('User not found');
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) throw new Error('Invalid password');
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { createUser, getUserById, searchUserByName, deleteUser, loginUser };

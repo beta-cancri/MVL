@@ -1,39 +1,16 @@
-.appContainer {
+.app-container {
   display: flex;
-  height: 100vh;
   flex-direction: column;
+  height: 100vh;
 }
 
-.contentContainer {
+.main-content {
   display: flex;
+  flex-direction: row;
   height: 100%;
-  width: 100%;
 }
 
-.mainContent {
-  flex: 1;
+.content {
+  flex-grow: 1;
   padding: 20px;
-  background-color: #f0f0f0;
-  overflow-y: auto;
-}
-
-.mainContentFull {
-  flex: 1;
-  padding: 20px;
-  background-color: #f0f0f0;
-  width: 100%;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-.navbarStyle {
-  width: 100%;
-}
-
-.sidebarStyle {
-  width: 200px;
-  background-color: #222;
-  color: white;
-  padding: 20px;
-  height: 100vh;
-}
+  margin-left: 250px; 

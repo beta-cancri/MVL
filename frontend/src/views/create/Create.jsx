@@ -5,7 +5,6 @@ const Create = () => {
   return (
     <div className="createStyle">
       <h1>Create Page</h1>
-      {/* Add content here */}
     </div>
   );
 };

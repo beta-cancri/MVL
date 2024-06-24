@@ -1,26 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './SidebarStyle.css';
 
-const Sidebar = ({ isLoggedIn, user }) => {
+const Sidebar = () => {
+  const user = useSelector(state => state.user);
+
   return (
     <div className="sidebarStyle">
-      {isLoggedIn ? (
-        <>
-          <div className="userInfoStyle">
-            <img src={user.picture} alt="User" />
-            <span>{user.name}</span>
-          </div>
-          <Link to="/profile" className="btnStyle">Profile</Link>
-          <Link to="/favorites" className="btnStyle">Favorites</Link>
-          <Link to="/user-list" className="btnStyle">My List</Link>
-        </>
-      ) : (
-        <>
-          <Link to="/login" className="btnStyle">Login</Link>
-          <Link to="/signup" className="btnStyle">Sign Up</Link>
-        </>
-      )}
+      <img src={user.picture || 'default-profile.png'} alt="profile" className="profilePic" />
+      <h3>{user.name || 'John Doe'}</h3>
+      <button>Profile</button>
+      <button>Favorites</button>
+      <button>My List</button>
     </div>
   );
 };
