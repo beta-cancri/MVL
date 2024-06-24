@@ -35,4 +35,15 @@ const searchUserByName = async (name) => {
   }
 };
 
-module.exports = { createUser, getUserById, searchUserByName };
+const deleteUser = async (id) => {
+  try {
+    const result = await User.destroy({
+      where: { id }
+    });
+    return result; // result will be 1 if the user was deleted, 0 if no user was found
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { createUser, getUserById, searchUserByName, deleteUser };

@@ -1,4 +1,4 @@
-const { createUser, getUserById, searchUserByName } = require('../controllers/userControllers');
+const { createUser, getUserById, searchUserByName, deleteUser } = require('../controllers/userControllers');
 
 const createUserHandler = async (req, res) => {
   const { username, password, email } = req.body;
@@ -33,8 +33,24 @@ const searchUserHandler = async (req, res) => {
   }
 };
 
+const deleteUserHandler = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await deleteUser(id);
+    if (result) {
+      res.status(200).send('User deleted successfully');
+    } else {
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    res.status(500).send('Error deleting user: ' + error.message);
+  }
+};
+
 module.exports = {
   createUserHandler,
   getUserHandler,
   searchUserHandler,
+  deleteUserHandler,
 };
