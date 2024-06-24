@@ -1,0 +1,54 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+  }
+  
+  .pagination button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 80px; 
+    height: 80px; 
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 0; 
+  }
+  
+  .pagination .btn-next {
+    background-image: url('https://i.imgur.com/y1bbkVP.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .pagination .btn-previous {
+    background-image: url('https://i.imgur.com/IPeVRvj.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .pagination button:hover {
+    transform: scale(1.05);
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .pagination span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    padding: 0 10px;
+    margin: 0 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+  }
+  

@@ -1,6 +1,6 @@
 .sidebarStyle {
   width: 250px;
-  background-color: #222;
+  background-color: #333;
   color: white;
   padding: 20px;
   height: calc(100vh - 60px); /* Ensure the sidebar accounts for the navbar height */

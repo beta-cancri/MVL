@@ -1,33 +1,45 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './SidebarStyle.css';
 
-const Sidebar = ({ isLoggedIn, user }) => {
+const Sidebar = ({ onFilterChange }) => {
+  const dispatch = useDispatch();
+  const genres = useSelector(state => state.videogames?.genres || []);
+  const platforms = useSelector(state => state.videogames?.platforms || []);
+
   const [filters, setFilters] = useState({
     newReleases: '',
     bestOfYear: '',
     topAllTime: false,
     bestRatedPerYear: '',
     genre: '',
-    platform: ''
+    platform: '',
+    order: ''
   });
 
   const handleFilterChange = (e) => {
-    setFilters({
+    const { name, value, type, checked } = e.target;
+    const newFilters = {
       ...filters,
-      [e.target.name]: e.target.value
-    });
+      [name]: type === 'checkbox' ? checked : value
+    };
+    setFilters(newFilters);
+    onFilterChange(newFilters);
   };
 
   const resetFilters = () => {
-    setFilters({
+    const resetFilters = {
       newReleases: '',
       bestOfYear: '',
       topAllTime: false,
       bestRatedPerYear: '',
       genre: '',
-      platform: ''
-    });
+      platform: '',
+      order: ''
+    };
+    setFilters(resetFilters);
+    onFilterChange(resetFilters);
   };
 
   return (
@@ -52,7 +64,7 @@ const Sidebar = ({ isLoggedIn, user }) => {
           type="checkbox"
           name="topAllTime"
           checked={filters.topAllTime}
-          onChange={(e) => setFilters({ ...filters, topAllTime: e.target.checked })}
+          onChange={handleFilterChange}
         />
         Top 250 Games of All Time
       </div>
@@ -61,10 +73,10 @@ const Sidebar = ({ isLoggedIn, user }) => {
         <h3>Best Rated Games Per Year</h3>
         <select name="bestRatedPerYear" value={filters.bestRatedPerYear} onChange={handleFilterChange}>
           <option value="">Select Year</option>
-          {/* Add options for years here */}
-          <option value="2023">2023</option>
-          <option value="2022">2022</option>
-          <option value="2021">2021</option>
+          {Array.from({ length: 50 }, (_, i) => {
+            const year = new Date().getFullYear() - i;
+            return <option key={year} value={year}>{year}</option>;
+          })}
         </select>
       </div>
 
@@ -72,10 +84,9 @@ const Sidebar = ({ isLoggedIn, user }) => {
         <h3>Genres</h3>
         <select name="genre" value={filters.genre} onChange={handleFilterChange}>
           <option value="">Select Genre</option>
-          {/* Add options for genres here */}
-          <option value="action">Action</option>
-          <option value="adventure">Adventure</option>
-          <option value="rpg">RPG</option>
+          {genres.map(genre => (
+            <option key={genre} value={genre}>{genre}</option>
+          ))}
         </select>
       </div>
 
@@ -83,10 +94,18 @@ const Sidebar = ({ isLoggedIn, user }) => {
         <h3>Platforms</h3>
         <select name="platform" value={filters.platform} onChange={handleFilterChange}>
           <option value="">Select Platform</option>
-          {/* Add options for platforms here */}
-          <option value="pc">PC</option>
-          <option value="playstation">PlayStation</option>
-          <option value="xbox">Xbox</option>
+          {platforms.map(platform => (
+            <option key={platform} value={platform}>{platform}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="filterGroup">
+        <h3>Sort Order</h3>
+        <select name="order" value={filters.order} onChange={handleFilterChange}>
+          <option value="">Select Order</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
         </select>
       </div>
     </div>

@@ -1,8 +1,7 @@
 .homeStyle {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
-  align-items: center;
   background-color: #333;
 }
 
