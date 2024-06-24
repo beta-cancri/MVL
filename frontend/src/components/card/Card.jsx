@@ -5,8 +5,7 @@ import './CardStyle.css';
 const Card = ({ id, name, genres, image, platforms, onClick }) => {
   console.log("Rendering videogame:", { id, name, genres, image });
 
-  const platformNames = platforms?.map(platform => platform.platform.name).join(', ') || 'No platforms available';
-  const genreNames = genres?.map(genre => genre.name).join(', ') || 'No genres available';
+  const platformNames = platforms ? platforms.map(platform => platform.platform.name).join(', ') : 'No platforms available';
 
   return (
     <div className="cardContainer" onClick={onClick}>
@@ -17,7 +16,6 @@ const Card = ({ id, name, genres, image, platforms, onClick }) => {
         <Link to={`/home/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <h2>{name || "No name available"}</h2>
           <p>{platformNames}</p>
-          <p>{genreNames}</p>
         </Link>
       </div>
     </div>

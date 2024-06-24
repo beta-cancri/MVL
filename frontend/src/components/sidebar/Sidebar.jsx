@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './SidebarStyle.css';
 
 const Sidebar = ({ onFilterChange }) => {
-  const dispatch = useDispatch();
   const genres = useSelector(state => state.videogames?.genres || []);
   const platforms = useSelector(state => state.videogames?.platforms || []);
 

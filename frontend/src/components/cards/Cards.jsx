@@ -3,11 +3,15 @@ import Card from '../card/Card';
 import './CardsStyle.css';
 
 const Cards = ({ allVideogames, onCardClick }) => {
-  const videogamesList = Array.isArray(allVideogames) ? allVideogames : [];
+  console.log('Rendering Cards component with games:', allVideogames);
+
+  if (!allVideogames.length) {
+    return <div>No games available</div>;
+  }
 
   return (
     <div className="cardList">
-      {videogamesList.map((game, index) => (
+      {allVideogames.map((game, index) => (
         <Card
           key={index}
           id={game.id}

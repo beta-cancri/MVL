@@ -11,7 +11,13 @@ const initialState = {
 
 function videogameReducer(state = initialState, action) {
   switch (action.type) {
+    case 'LOADING_VIDEOGAMES':
+      return {
+        ...state,
+        isLoading: true,
+      };
     case GET_VIDEOGAMES:
+      console.log('Reducer received GET_VIDEOGAMES action:', action.payload);
       return {
         ...state,
         allVideogames: action.payload.results || [],

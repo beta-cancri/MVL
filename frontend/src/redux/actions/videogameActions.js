@@ -3,7 +3,7 @@ import axios from 'axios';
 const URL = process.env.REACT_APP_URL;
 const DB_KEY = process.env.REACT_APP_DB_KEY;
 
-console.log('Environment Variables:', { URL, DB_KEY }); // Log environment variables
+console.log('Environment Variables:', { URL, DB_KEY });
 
 export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
 export const GET_BY_NAME = 'GET_BY_NAME';
@@ -13,11 +13,13 @@ const MAX_ITEMS = 15;
 
 export function getVideogames(limit = MAX_ITEMS) {
   return async function (dispatch) {
+    dispatch({ type: 'LOADING_VIDEOGAMES' });
     try {
       const fetchPage = async (page) => {
         const requestUrl = `${URL}?key=${DB_KEY}&page_size=40&page=${page}`;
-        console.log(`Fetching page ${page} with URL: ${requestUrl}`); // Log the URL being requested
+        console.log(`Fetching page ${page} with URL: ${requestUrl}`);
         const response = await axios.get(requestUrl);
+        console.log(`Data fetched for page ${page}:`, response.data);
         return response.data.results || [];
       };
 
@@ -32,8 +34,11 @@ export function getVideogames(limit = MAX_ITEMS) {
         name: game.name,
         rating: game.rating,
         genres: game.genres.map(genre => genre.name).join(', '),
-        platforms: game.platforms.map(platform => platform.platform.name).join(', ')
+        platforms: game.platforms.map(platform => platform.platform.name).join(', '),
+        image: game.background_image || 'placeholder_image_url'
       }));
+
+      console.log('Formatted Results:', formattedResults);
 
       const genres = Array.from(new Set(formattedResults.flatMap(game => game.genres.split(', '))));
       const platforms = Array.from(new Set(formattedResults.flatMap(game => game.platforms.split(', '))));
