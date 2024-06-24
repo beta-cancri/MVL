@@ -1,0 +1,32 @@
+.landingStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000 url('https://i.imgur.com/CGoIHOO.png') no-repeat center center/cover;
+}
+
+.loginContainerStyle {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.loginContainerStyle h1 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.buttonsStyle .btnStyle {
+  background: #1e90ff;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.buttonsStyle .btnStyle:hover {
+  background: #0a74da;
+}

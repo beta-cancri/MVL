@@ -1,0 +1,41 @@
+.navbarStyle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.topBarStyle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logoStyle {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.searchBarStyle {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.searchBarStyle input {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+.searchBarStyle button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #0066cc;
+  color: white;
+  cursor: pointer;
+}
