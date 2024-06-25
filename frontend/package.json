@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "cross-env": "^7.0.3",
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.9",
@@ -23,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "node proxy.js"
   },
   "eslintConfig": {
     "extends": [

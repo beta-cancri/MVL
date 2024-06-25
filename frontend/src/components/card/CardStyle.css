@@ -1,11 +1,12 @@
+/* CardStyle.css */
 .cardContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 300px; /* Ensure each card has a maximum width */
+  max-width: 250px; /* Ensure each card has a maximum width */
   height: 400px; /* Adjust this value to make the card taller */
   background-color: black;
-  color: #333;
+  color: #fff; /* Change text color to white for better contrast */
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,10 +38,10 @@
 .cardContent h2 {
   margin: 10px 0;
   font-size: 1.5em;
-  color: #333;
+  color: #fff; /* Change text color to white for better contrast */
 }
 
 .cardContent p {
   margin: 5px 0;
-  color: #666;
+  color: #ccc; /* Change text color to a lighter shade for better contrast */
 }

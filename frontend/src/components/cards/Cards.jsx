@@ -5,8 +5,8 @@ import './CardsStyle.css';
 const Cards = ({ allVideogames, onCardClick }) => {
   console.log('Rendering Cards component with games:', allVideogames);
 
-  if (!allVideogames.length) {
-    return <div>No games available</div>;
+  if (allVideogames.length === 0) {
+    return <p>No games available.</p>;
   }
 
   return (

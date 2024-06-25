@@ -1,8 +1,9 @@
 import { GET_VIDEOGAMES, GET_BY_NAME, GET_DETAIL } from '../actions/videogameActions';
+import { FETCH_GENRES_SUCCESS } from '../actions/genreActions';
+import { FETCH_PLATFORMS_SUCCESS } from '../actions/platformActions';
 
 const initialState = {
   allVideogames: [],
-  videogamesCopy: [],
   genres: [],
   platforms: [],
   currentVideogame: {},
@@ -10,21 +11,23 @@ const initialState = {
 };
 
 function videogameReducer(state = initialState, action) {
+  console.log('Reducer received action:', action);
   switch (action.type) {
-    case 'LOADING_VIDEOGAMES':
-      return {
-        ...state,
-        isLoading: true,
-      };
     case GET_VIDEOGAMES:
-      console.log('Reducer received GET_VIDEOGAMES action:', action.payload);
       return {
         ...state,
-        allVideogames: action.payload.results || [],
-        videogamesCopy: action.payload.results || [],
-        genres: action.payload.genres || [],
-        platforms: action.payload.platforms || [],
+        allVideogames: action.payload,
         isLoading: false,
+      };
+    case FETCH_GENRES_SUCCESS:
+      return {
+        ...state,
+        genres: action.payload,
+      };
+    case FETCH_PLATFORMS_SUCCESS:
+      return {
+        ...state,
+        platforms: action.payload,
       };
     case GET_BY_NAME:
       if (Array.isArray(action.payload)) {

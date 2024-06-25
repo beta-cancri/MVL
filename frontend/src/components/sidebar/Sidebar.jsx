@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchGenres } from '../../redux/actions/genreActions';
+import { fetchPlatforms } from '../../redux/actions/platformActions';
 import './SidebarStyle.css';
 
 const Sidebar = ({ onFilterChange }) => {
-  const genres = useSelector(state => state.videogames?.genres || []);
-  const platforms = useSelector(state => state.videogames?.platforms || []);
+  const dispatch = useDispatch();
+  const genres = useSelector(state => state.genres?.genres || []);
+  const platforms = useSelector(state => state.platforms?.platforms || []);
 
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = React.useState({
     newReleases: '',
     bestOfYear: '',
     topAllTime: false,
@@ -16,6 +19,16 @@ const Sidebar = ({ onFilterChange }) => {
     platform: '',
     order: ''
   });
+
+  useEffect(() => {
+    dispatch(fetchGenres());
+    dispatch(fetchPlatforms());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('Genres:', genres);
+    console.log('Platforms:', platforms);
+  }, [genres, platforms]);
 
   const handleFilterChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -84,7 +97,7 @@ const Sidebar = ({ onFilterChange }) => {
         <select name="genre" value={filters.genre} onChange={handleFilterChange}>
           <option value="">Select Genre</option>
           {genres.map(genre => (
-            <option key={genre} value={genre}>{genre}</option>
+            <option key={genre.id} value={genre.name}>{genre.name}</option>
           ))}
         </select>
       </div>
@@ -94,7 +107,7 @@ const Sidebar = ({ onFilterChange }) => {
         <select name="platform" value={filters.platform} onChange={handleFilterChange}>
           <option value="">Select Platform</option>
           {platforms.map(platform => (
-            <option key={platform} value={platform}>{platform}</option>
+            <option key={platform.id} value={platform.name}>{platform.name}</option>
           ))}
         </select>
       </div>
